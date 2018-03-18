@@ -11,4 +11,4 @@ A sequence of tokens forming a sentence has multiple *POS* tag sequences. A **Hi
 
 ![img](https://raw.githubusercontent.com/Tapojit/structured-perceptron-and-viterbi/master/HMM1.png)
 
-Here *P_E*
+Here, *P<sub>E</sub>* is emmision probability.
