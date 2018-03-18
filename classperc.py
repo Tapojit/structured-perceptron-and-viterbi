@@ -8,7 +8,7 @@ import random
 POS_LABEL = 'pos'
 NEG_LABEL = 'neg'
 
-# Path to dataset - FILL IN THE FOLLOWING LINE
+# Path to dataset
 PATH_TO_DATA = "large_movie_review_dataset"
 TRAIN_DIR = os.path.join(PATH_TO_DATA, "train")
 TEST_DIR = os.path.join(PATH_TO_DATA, "test")
@@ -86,13 +86,10 @@ def construct_dataset(train=True):
     return dataset
 
 ###############################
-# YOUR CODE GOES BELOW
+
 
 def features_for_label(bow, label):
     """
-    !! MAKE SURE YOU UNDERSTAND WHAT IS GOING ON HERE                     !!
-    !! You will need to implement/use a function very similar to this for !!
-    !! the structured perceptron code.                                    !!
 
     The full f(x,y) function. Pass in the bag-of-words for one document
     (represented as a dictionary) and a string label. Returns one big feature
@@ -110,12 +107,7 @@ def predict_multiclass(bow, weights):
     weights for features of each label (represented as a dictionary) and
     performs perceptron multi-class classification (i.e., finds the class with the highest
     score under the model.
-
-    You may find it peculiar that the name of this function has to do with multiclass
-    classification or that we are making predictions in this relatively complicated way
-    given the binary classification setting. You are correct; this is a bit weird. But,
-    this code looks a lot like the code for multiclass perceptron and the structured
-    perceptron (i.e., making the next part of this homework easier).
+    
     """
     pos_feat_vec = features_for_label(bow, "1")
     neg_feat_vec = features_for_label(bow, "-1")
@@ -144,7 +136,6 @@ def train(examples, stepsize=1, numpasses=10, do_averaging=False, devdata=None):
     current_iter=None
 
     def get_averaged_weights():
-        # IMPLEMENT ME when you get to this part
         return {k:weights.get(k,0)-S_t.get(k,0)/current_iter for k in set(weights) | set(S_t)}
 
     print "[training...]"
@@ -160,11 +151,6 @@ def train(examples, stepsize=1, numpasses=10, do_averaging=False, devdata=None):
             
             
             
-
-                # IMPLEMENT ME
-                # you might also need to add some additional code to this function
-                
-                # but the majority of what you need to write goes here
                 
                 
                 #For perceptron with no average weight implementation#
@@ -205,7 +191,6 @@ def do_evaluation(examples, weights):
 
 def plot_accuracy_vs_iteration(train_acc, test_acc, avg_test_acc, naive_bayes_acc):
     """
-    IMPLEMENT ME!
 
     Plot the vanilla perceptron accuracy on the trainning set and test set
     and the averaged perceptron accuracy on the test set.
