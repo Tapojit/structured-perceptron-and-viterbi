@@ -51,4 +51,4 @@ Worked!
 
 ## Structured Perceptron
 
-A **perceptron** is a machine learning algorithm which is trained on a set of features *x* and labels *y* to make future label predictions on input features. Training occurs in multiple iterations, each of which involves two steps: *inference* & *weight updates*. Before training starts, weight *_theta_* is initialized as a vector of zeroes. Inference step involves predicting labels *y<su>*</su>* of training features 
+A **perceptron** is a machine learning algorithm which is trained on a set of features *x* and labels *y* to make future label predictions on input features. Training occurs in multiple iterations, each of which involves two steps: *inference* & *weight updates*. Before training starts, weight *<p>&theta</p>* is initialized as a vector of zeroes. Inference step involves predicting labels *y<su>*</su>* of training features 
