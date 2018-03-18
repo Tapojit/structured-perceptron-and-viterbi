@@ -7,4 +7,6 @@ This is an implementation of a structured perceptron to predict **Parts of Speec
 
 Check out [this website](https://www.sketchengine.co.uk/penn-treebank-tagset/) for a comprehensive list of *POS* tags.
 
-In order to determine
+A sequence of tokens forming a sentence has multiple *POS* tag sequences. A **Hidden Markov Model** (HMM) of the sequence of tokens can be used to determine its most probable POS tag sequence. This HMM is a probabilistic model of all possible POS tag sequences. The log likelihood of a given POS tag sequence *Y* for a sequence of tokens *X* can be determined using the equation below:
+
+![img](https://raw.githubusercontent.com/Tapojit/structured-perceptron-and-viterbi/master/HMM1.png)
