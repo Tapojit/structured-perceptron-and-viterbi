@@ -47,4 +47,6 @@ Bs= [[0.7615196207645206, 0.5937904145636841, 0.7013693739122513, 0.203606937442
 Worked!
 
 ```
-*output_vocab* is the POS tag sequence returned by Viterbi. *A* is the transition probability dictionary, whereas *B* is the emission probability list. **randomized_test** function uses an exhaustive search algorithm to find the correct POS tag sequence, which is cross-verified against output of **viterbi**. If **viterbi**'s output is incorrect, an assertion error is thrown, otherwise the last line of the output prints out *Worked!*
+*output_vocab* is the POS tag sequence returned by Viterbi. *A* is the transition probability dictionary, whereas *Bs* is the emission probability list. **randomized_test** function uses an exhaustive search algorithm to find the correct POS tag sequence, which is cross-verified against output of **viterbi**. If **viterbi**'s output is incorrect, an assertion error is thrown, otherwise the last line of the output prints out *Worked!*
+
+## Structured Perceptron
