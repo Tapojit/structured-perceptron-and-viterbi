@@ -20,7 +20,6 @@ def exhaustive(A_factor, B_factors, output_vocab):
 
     def allpaths(sofar):
         # Recursively generate all sequences given a prefix "sofar".
-        # this probably could be redone cleverly as a python generator
         retpaths = []
         if len(sofar)==N:
             return [sofar]
@@ -35,14 +34,14 @@ def exhaustive(A_factor, B_factors, output_vocab):
         score = goodness_score(path, A_factor, B_factors)
         path_scores[path] = score
     bestseq = dict_argmax(path_scores)
-    return list(bestseq)  # might as well convert it to a list, why not
+    return list(bestseq) 
 
 def viterbi(A_factor, B_factors, output_vocab):
     """
     A_factor: a dict of key:value pairs of the form
         {(curtag,nexttag): score}
     with keys for all K^2 possible neighboring combinations,
-    and scores are numbers.  We assume they should be used ADDITIVELY, i.e. in log space.
+    and scores are numbers.  Assuming they should be used ADDITIVELY, i.e. in log space.
     higher scores mean MORE PREFERRED by the model.
 
     B_factors: a list where each entry is a dict {tag:score}, so like
@@ -64,12 +63,8 @@ def viterbi(A_factor, B_factors, output_vocab):
     # back[0] could be left empty. it will never be used.
     back = [{tag:None for tag in output_vocab} for t in range(N)]
     
-    # todo implement the main viterbi loop here
-    # you may want to handle the t=0 case separately
-    
-    # todo implement backtrace also
+
     res=[]
-    # dummy return value
     output_vocab=list(output_vocab)
     for t in range(N):
         for k in output_vocab:
