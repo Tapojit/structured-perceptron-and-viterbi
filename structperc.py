@@ -4,7 +4,7 @@ from collections import defaultdict
 from pprint import pprint
 import pickle
 ##########################
-from vit_starter import viterbi  # your vit.py from part 1
+from vit_starter import viterbi
 OUTPUT_VOCAB = set(""" ! # $ & , @ A D E G L M N O P R S T U V X Y Z ^ """.split())
 
 ##########################
