@@ -11,4 +11,4 @@ A sequence of tokens forming a sentence has multiple *POS* tag sequences. A **Hi
 
 ![img](https://raw.githubusercontent.com/Tapojit/structured-perceptron-and-viterbi/master/HMM1.png)
 
-Here, *P<sub>E</sub>* is emmision probability.
+Here, *P<sub>E</sub>* is emission probability and *P<sub>T</sub>* is transition probability. Emission probability is the likelihood of a tag *y<sub>i</sub>* being assigned to token *x<sub>i</sub>*, whereas transition probability is the likelihood that a tag *y<sub>i-1</sub>* is followed by the tag *y<sub>i</sub>*
