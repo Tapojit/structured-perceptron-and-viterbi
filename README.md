@@ -9,6 +9,6 @@ Check out [this website](https://www.sketchengine.co.uk/penn-treebank-tagset/) f
 
 A sequence of tokens forming a sentence has multiple *POS* tag sequences. A **Hidden Markov Model** (HMM) of the sequence of tokens can be used to determine its most probable POS tag sequence. This HMM is a probabilistic model of all possible POS tag sequences. The log likelihood of a given POS tag sequence *Y* for a sequence of tokens *X* can be determined using the equation below:
 
-![img](https://raw.githubusercontent.com/Tapojit/structured-perceptron-and-viterbi/master/HMM1.png)
+![img](https://raw.githubusercontent.com/Tapojit/structured-perceptron-and-viterbi/master/HMM.png)
 
 Here, *P<sub>E</sub>* is emission probability and *P<sub>T</sub>* is transition probability. Emission probability is the likelihood of a tag *y<sub>i</sub>* being assigned to token *x<sub>i</sub>*, whereas transition probability is the likelihood that a tag *y<sub>i-1</sub>* is followed by the tag *y<sub>i</sub>*
