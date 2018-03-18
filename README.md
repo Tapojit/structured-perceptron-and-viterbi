@@ -50,3 +50,5 @@ Worked!
 *output_vocab* is the POS tag sequence returned by Viterbi. *A* is the transition probability dictionary, whereas *Bs* is the emission probability list. **randomized_test** function uses an exhaustive search algorithm to find the correct POS tag sequence, which is cross-verified against output of **viterbi**. If **viterbi**'s output is incorrect, an assertion error is thrown, otherwise the last line of the printed output is *Worked!*
 
 ## Structured Perceptron
+
+A **perceptron** is a machine learning algorithm which is trained on a set of features *x* and labels *y* to make future label predictions on input features. Training occurs in multiple iterations, each of which involves two steps: *inference* & *weight updates*. Before training starts, weight is initialized as a vector of zeroes. Inference step involves predicting labels *y<su>*</su>* of training features 
