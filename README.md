@@ -55,5 +55,74 @@ A **perceptron** is a machine learning algorithm which is trained on a set of fe
 
 An **averaged perceptron** keeps track of *cumulative loss values* over each iteration, while carrying out weight updates as in a typical perceptron. *Averaged weight* is calculated at the end of each iteration using the *cumulative loss values*. Averaged weights allow for better generalization in the long run.
 
-The purpose of the **structured perceptron** is to predict the POS tag sequence, given a string of tokens. Transition and emission log probabilities, along with a bias are used as weights here. The viterbi algorithm is used to determine the gold POS tag sequence, whose log likelihood is used 
+The purpose of the **structured perceptron** is to predict the POS tag sequence, given a string of tokens. Transition and emission log probabilities, along with a bias are used as weights here. The viterbi algorithm is used to determine the gold POS tag sequence, whose log likelihood is compared to the log likelihood of the predicted POS tag sequence to determine the loss value. This loss value is used to punish and reward the weights during update.
+
+## How to carry out training of structured perceptron
+
+**structperc.py** contains an implementation of *averaged structured perceptron*. You can start training by running **train** function, which takes as arguments:
+
+1. examples: Training dataset
+2. stepsize: set to *1* by default
+3. numpasses: number of iterations; set to *10* by default
+4. do_averaging: takes boolean. Averages weight vector if *True*. Set to *False* by default.
+5. devdata: Test dataset, if you want to carry out test at the end of training. Set to *None* by default
+
+In order to carry out training, you can use bash to run the line below from within the repository directory:
+
+```
+>>> python structperc.py
+
+```
+The training function returns a dictionary of trained weights and prints out the prediction accuracy score for training and test data.
+
+Below is the print output obtained from a training and test session. Training took place over 10 iterations. *TR  RAW EVAL* is training score with unaveraged weights, *DEV RAW EVAL* is test score with unaveraged weights and *DEV AVG EVAL* is test score with averaged weights. The scores are between 0 and 1.
+
+```
+Training iteration 0
+TR  RAW EVAL: 9951/14619 = 0.6807 accuracy
+DEV RAW EVAL: 2783/4823 = 0.5770 accuracy
+DEV AVG EVAL: 2783/4823 = 0.5770 accuracy
+Training iteration 1
+TR  RAW EVAL: 11409/14619 = 0.7804 accuracy
+DEV RAW EVAL: 3054/4823 = 0.6332 accuracy
+DEV AVG EVAL: 3066/4823 = 0.6357 accuracy
+Training iteration 2
+TR  RAW EVAL: 11933/14619 = 0.8163 accuracy
+DEV RAW EVAL: 2941/4823 = 0.6098 accuracy
+DEV AVG EVAL: 3121/4823 = 0.6471 accuracy
+Training iteration 3
+TR  RAW EVAL: 12377/14619 = 0.8466 accuracy
+DEV RAW EVAL: 3072/4823 = 0.6369 accuracy
+DEV AVG EVAL: 3196/4823 = 0.6627 accuracy
+Training iteration 4
+TR  RAW EVAL: 12726/14619 = 0.8705 accuracy
+DEV RAW EVAL: 3129/4823 = 0.6488 accuracy
+DEV AVG EVAL: 3235/4823 = 0.6707 accuracy
+Training iteration 5
+TR  RAW EVAL: 12561/14619 = 0.8592 accuracy
+DEV RAW EVAL: 3036/4823 = 0.6295 accuracy
+DEV AVG EVAL: 3265/4823 = 0.6770 accuracy
+Training iteration 6
+TR  RAW EVAL: 12862/14619 = 0.8798 accuracy
+DEV RAW EVAL: 3147/4823 = 0.6525 accuracy
+DEV AVG EVAL: 3270/4823 = 0.6780 accuracy
+Training iteration 7
+TR  RAW EVAL: 12827/14619 = 0.8774 accuracy
+DEV RAW EVAL: 3146/4823 = 0.6523 accuracy
+DEV AVG EVAL: 3272/4823 = 0.6784 accuracy
+Training iteration 8
+TR  RAW EVAL: 12880/14619 = 0.8810 accuracy
+DEV RAW EVAL: 3146/4823 = 0.6523 accuracy
+DEV AVG EVAL: 3270/4823 = 0.6780 accuracy
+Training iteration 9
+TR  RAW EVAL: 12868/14619 = 0.8802 accuracy
+DEV RAW EVAL: 3131/4823 = 0.6492 accuracy
+DEV AVG EVAL: 3271/4823 = 0.6782 accuracy
+Learned weights for 21606 features from 1000 examples
+
+```
+
+By default, training in **structperc.py** is carried out on **oct27.train** and testing on **oct27.dev**. Both datasets are parsed by the function **read_tagging_file** in the script. If you want to use your own dataset(s), check out the default datasets and the dataset parser function.
+
+## NOTES
 
