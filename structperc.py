@@ -4,7 +4,6 @@ from collections import defaultdict
 from pprint import pprint
 import pickle
 ##########################
-# Stuff you will use
 from vit_starter import viterbi  # your vit.py from part 1
 OUTPUT_VOCAB = set(""" ! # $ & , @ A D E G L M N O P R S T U V X Y Z ^ """.split())
 
@@ -54,8 +53,6 @@ def read_tagging_file(filename):
     return ret
 ###############################
 
-## Evaluation utilties you don't have to change
-
 def do_evaluation(examples, weights):
     num_correct,num_total=0,0
     for tokens,goldlabels in examples:
@@ -93,8 +90,6 @@ def show_predictions(tokens, goldlabels, predlabels):
 
 ###############################
 
-## YOUR CODE BELOW
-
 
 def train(examples, stepsize=1, numpasses=10, do_averaging=False, devdata=None):
     """
@@ -114,9 +109,6 @@ def train(examples, stepsize=1, numpasses=10, do_averaging=False, devdata=None):
 
     for pass_iteration in range(numpasses):
         print "Training iteration %d" % pass_iteration
-        # IMPLEMENT THE INNER LOOP!
-        # Like the classifier perceptron, you may have to implement code
-        # outside of this loop as well!
 
         for tokens,goldlabels in examples:
             predlabel = predict_seq(tokens, weights)
@@ -155,7 +147,6 @@ def predict_seq(tokens, weights):
     sequence of tags
     """
     
-    # once you have Ascores and Bscores, could decode with
     # predlabels = greedy_decode(Ascores, Bscores, OUTPUT_VOCAB)
     Ascores,Bscores=calc_factor_scores(tokens, weights)
     return viterbi(Ascores,Bscores,OUTPUT_VOCAB)
@@ -190,15 +181,10 @@ def local_emission_features(t, tag, tokens):
 
 def features_for_seq(tokens, labelseq):
     """
-    IMPLEMENT ME!
 
     tokens: a list of tokens
     labelseq: a list of output labels
-    The full f(x,y) function. Returns one big feature vector. This is similar
-    to features_for_label in the classifier peceptron except here we aren't
-    dealing with classification; instead, we are dealing with an entire
-    sequence of output tags.
-
+    The full f(x,y) function. Returns one big feature vector.
     This returns a feature vector represented as a dictionary.
     """
     
@@ -216,7 +202,6 @@ def features_for_seq(tokens, labelseq):
 
 def calc_factor_scores(tokens, weights):
     """
-    IMPLEMENT ME!
 
     tokens: a list of tokens
     weights: perceptron weights (dict)
@@ -226,11 +211,9 @@ def calc_factor_scores(tokens, weights):
     Bscores which is a list of dictionaries of tagscores per token
     """
     N = len(tokens)
-    # MODIFY THE FOLLOWING LINE
     Ascores = { (tag1,tag2): weights.get((tag1,tag2),0) for tag1 in OUTPUT_VOCAB for tag2 in OUTPUT_VOCAB }
     Bscores = []
     for t in range(N):
-        # IMPLEMENT THE INNER LOOP
         simple_dict=defaultdict(float)
         for tags in OUTPUT_VOCAB:
             key_potential="tag=%s_curword=%s" %(tags,tokens[t])
@@ -243,7 +226,6 @@ def calc_factor_scores(tokens, weights):
     return Ascores, Bscores
 
 if __name__ == '__main__':
-    # You may implement your code here
     training_data=read_tagging_file("oct27.train")
     test_data=read_tagging_file("oct27.dev")
     with open("weights.txt","rb") as fp:
