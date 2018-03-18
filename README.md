@@ -126,3 +126,4 @@ By default, training in **structperc.py** is carried out on **oct27.train** and 
 
 ## NOTES
 
+You can check out **classperc.py**, which contains implementation of an averaged perceptron for binary classification of positive and negative sentiment tweets.
