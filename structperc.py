@@ -228,14 +228,14 @@ def calc_factor_scores(tokens, weights):
 if __name__ == '__main__':
     training_data=read_tagging_file("oct27.train")
     test_data=read_tagging_file("oct27.dev")
-    with open("weights.txt","rb") as fp:
-        weights=pickle.load(fp)
+#     with open("weights.txt","rb") as fp:
+#         weights=pickle.load(fp)
     
         
-    fancy_eval(test_data[6:7], weights)
+#     fancy_eval(test_data[6:7], weights)
 
-#     random.shuffle(training_data)
-#     sol_dict = train(training_data, do_averaging=True, devdata=test_data)
+    random.shuffle(training_data)
+    sol_dict = train(training_data, do_averaging=True, devdata=test_data)
 #     with open("weights.txt","wb") as fp:
 #         pickle.dump(sol_dict, fp)
 #     
